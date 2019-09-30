@@ -6,9 +6,9 @@ $(function () {
         getUrl($(this).data('url-id'));
     });
 
-    $('.url-card').first().click();
-
     function getUrl(urlId) {
         $.get(APP_BASE_URL + 'app/urls/' + urlId);
     }
+
+    $('.url-card').first().click();
 });
