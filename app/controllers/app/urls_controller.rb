@@ -4,7 +4,7 @@ module App
     before_action :set_url, only: [:show, :edit, :update]
 
     def index
-      @urls = Url.from_current_user(current_user).paginate(page: params[:page], per_page: 4)
+      @urls = Url.from_current_user(current_user).paginate(page: params[:page], per_page: 3)
     end
 
     def show
