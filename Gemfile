@@ -44,9 +44,11 @@ gem 'jquery-rails'
 
 gem 'will_paginate'
 
+gem 'will_paginate-bootstrap'
+
 gem 'geocoder'
 
-gem "devise", ">= 4.7.1"
+gem 'devise'
 
 gem 'devise-i18n'
 

@@ -228,7 +228,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
-  devise (>= 4.7.1)
+  devise
   devise-i18n
   geocoder
   jbuilder (~> 2.5)
