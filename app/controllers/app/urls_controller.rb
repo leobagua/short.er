@@ -4,7 +4,7 @@ module App
     before_action :set_url, only: [:show, :edit, :update]
 
     def index
-      @urls = Url.from_current_user(current_user).paginate(page: params[:page], per_page: 3)
+      @urls = Url.from_current_user(current_user).paginate(page: params[:page], per_page: 4)
     end
 
     def show
@@ -18,9 +18,8 @@ module App
 
     def create
       @url = UrlService.create_url url_params.merge(user: current_user)
-
       if @url.has_saved?
-        redirect_to app_root_path
+        redirect_to app_urls_path
       else
         respond_to do |format|
           format.js { render action: 'new' }
@@ -33,7 +32,7 @@ module App
     def update
       UrlService.update_url(@url, url_params)
       if @url.has_updated?
-        redirect_to app_root_path
+        redirect_to app_urls_path
       else
         respond_to do |format|
           format.js { render action: 'edit' }

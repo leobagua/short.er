@@ -4,7 +4,7 @@ class RedirectsController < ApplicationController
   def redirect
     if @url
       redirect_to @url.long
-      ClickCountJob.perform_later url: @url, ip: '127.0.0.1', country: 'Brazil'
+      ClickCountJob.perform_later url: @url, ip: Rails.env.production? ? request.remote_ip : request.ip
     else
       render 'errors/not_found'
     end

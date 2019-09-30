@@ -5,6 +5,12 @@ Rails.application.routes.draw do
       passwords: 'users/passwords',
   }
 
+  constraints user_root: 'user' do
+    authenticated :user do
+      root 'app/urls#index', as: :authenticated_user_root
+    end
+  end
+
   root 'homepage/home#index'
 
   namespace :homepage do
@@ -12,7 +18,7 @@ Rails.application.routes.draw do
   end
 
   namespace :app do
-    root 'urls#index'
+    'app/urls#index'
     resources :urls
   end
 

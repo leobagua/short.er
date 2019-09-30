@@ -27,7 +27,7 @@
             <h6 class="text-uppercase text-muted ls-1 mb-1">Localizações</h6>
             <h3 class="text-uppercase ls-1 mb-1">Países</h3>
             <h5 class="mb-0 text-success"><%= "#{root_url}#{url.short}" %></h5>
-            <h6 class="mb-0 text-success"><%= url_clicks_info[:clicks_by_country].to_a.size %></h6>
+            <h6 class="mb-0 text-success"><%= url_clicks_info[:clicks_by_country].to_a.size %> clique(s)</h6>
           </div>
         </div>
       </div>
@@ -38,7 +38,6 @@
             <tr>
               <th scope="col">País</th>
               <th scope="col">Cliques</th>
-              <th scope="col">Taxa de Cliques</th>
             </tr>
             </thead>
             <tbody>
@@ -49,9 +48,6 @@
                 </th>
                 <td>
                   <%= click_by_country.number_of_clicks %>
-                </td>
-                <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 89,53%
                 </td>
               </tr>
             <% end %>

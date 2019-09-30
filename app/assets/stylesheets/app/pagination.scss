@@ -1,0 +1,11 @@
+.pagination-container {
+  span {
+    color: $gray-200;
+  }
+  .current {
+    color: $gray-500;
+  }
+  a {
+    color: $gray-200;
+  }
+}

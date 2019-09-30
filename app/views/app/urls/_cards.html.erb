@@ -28,7 +28,7 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <%= will_paginate @urls, renderer: BootstrapPagination::Rails %>
+          <%= will_paginate @urls, class: 'mt-4 pagination-container', previous_label: '', next_label: '' %>
         </div>
       </div>
     </div>
