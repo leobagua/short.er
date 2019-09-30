@@ -1,24 +1,21 @@
-# README
+# Short.er
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Descrição:
+Shorter é uma aplicação destianada a realizar o encurtamento de Urls. 
+Por exemplo, a URL https://google.com.br/search?q=shorter pode ser encurtada como
+https://short.er/sDfgT5a
 
-Things you may want to cover:
+Veja um exemplo em: https://shorter-demo.herokuapp.com/
 
-* Ruby version
+## Requerimentos:
 
-* System dependencies
+* Ruby 2.6.3
+* Rails 5.2.3
 
-* Configuration
+### Getting started
+* git clone git@github.com:leobagua/short.er.git
+* cd folder
+* bundle
+* rails s
+* http://localhost:4567
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
