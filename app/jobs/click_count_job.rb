@@ -3,7 +3,8 @@ class ClickCountJob < ApplicationJob
 
   def perform(*args)
     attributes = args.extract_options!
-    attributes.merge(country: Geocoder.search(attributes[:ip]).first.country)
+    country = Geocoder.search(attributes[:ip]).first.country.presence || 'N/A'
+    attributes.merge!(country: country)
     ClickService.create_click attributes
   end
 end
