@@ -48,7 +48,7 @@ gem 'will_paginate-bootstrap'
 
 gem 'geocoder'
 
-gem 'devise'
+gem "devise", ">= 4.7.1"
 
 gem 'devise-i18n'
 
