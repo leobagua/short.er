@@ -15,7 +15,7 @@ class UrlService
   end
 
   def self.valid_url?(url)
-    url.prepend('http://') unless url =~ PROTOCOL_REGEX
+    url.to_s.prepend('http://') unless url =~ PROTOCOL_REGEX
     (url =~ PROTOCOL_REGEX).present?
   end
 end

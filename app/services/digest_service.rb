@@ -1,7 +1,7 @@
 class DigestService
 
   def self.long_digest_url(long_url)
-    Digest::SHA1.hexdigest long_url + salt
+    Digest::SHA1.hexdigest long_url.to_s + salt
   end
 
   private

@@ -30,6 +30,6 @@ class Url < ApplicationRecord
   end
 
   def valid_url?
-    errors.add :long, 'não é uma url válida.' unless UrlService.valid_url? long
+    errors.add :long, 'não é uma url válida' unless UrlService.valid_url? long
   end
 end
