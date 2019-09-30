@@ -1,0 +1,58 @@
+$("#url-info-container").html("<%= j(render partial: 'url_info_charts', locals: { url: @url, url_clicks_info: @url_clicks_info }) %>");
+
+$(function () {
+    var $chart = $('#chart-orders');
+    var $labels = <%= raw @url_clicks_info[:clicks_by_date].map {|info| info.date.to_formatted_s(:short)}.to_json %>;
+    var $data = <%= raw @url_clicks_info[:clicks_by_date].map(&:number_of_clicks).to_json %>;
+    var $backgroundColor = '<%= @url.color %>'
+
+    function initChart($chart) {
+        var ordersChart = new Chart($chart, {
+            type: 'bar',
+            options: {
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            lineWidth: 1,
+                            color: '#2dce89',
+                            zeroLineColor: '#dfe2e6'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                if (!(value % 10)) {
+                                    //return '$' + value + 'k'
+                                    return value
+                                }
+                            }
+                        }
+                    }]
+                }
+            },
+            data: {
+                labels: $labels,
+                datasets: [{
+                    label: '22 Set - 28 Set',
+                    backgroundColor: $backgroundColor,
+                    data: $data
+                }],
+                options: {
+                    legend: {
+                        display: false
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.yLabel;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        $chart.data('chart', ordersChart);
+    }
+
+    if ($chart.length) {
+        initChart($chart);
+    }
+});

@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    attributes:
+      url:
+        id: Identificador
+        description: Descrição
+        long: Url Longa
+        short: Short.er Link
+        color: Cor
+        clicks_count: Contagem de Clicks
+        created_at: Criado em
+        updated_at: Atualizado em
+        user_id: Identificador do Usuário
+        user: Usuário
+      click:
+        id: Identificador
+        country: País
+        date: Data
+        created_at: Criado em
+        updated_at: Atualizado em
+        url_id: Identificador do Short.er Link
+        url: Short.er Link

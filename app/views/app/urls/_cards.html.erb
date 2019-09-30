@@ -1,0 +1,55 @@
+<% if @urls.present? %>
+  <div class="header pb-6 pt-4 bg-gradient-header">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row">
+          <% @urls.each do |url| %>
+            <div class="col-xl-3 col-lg-6 animated fadeInUp">
+              <div class="url-card card card-stats mb-4 mb-xl-0" data-url-id="<%= url.id %>">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h4 class="card-title text-uppercase text-muted mb-0 animated fadeInUp"><%= url.created_at.to_date.to_formatted_s(:short) %></h4>
+                      <a href="<%= url.long %>" class="h5 font-weight-bold mb-0 animated fadeInUp" target="_blank"><%= url.long %></a>
+                    </div>
+                    <div class="col-auto">
+                      <div class="icon icon-shape rounded-circle shadow" style="background-color: <%= url.color %> !important;"></div>
+                    </div>
+                  </div>
+                  <p class="mt-3 mb-0 text-muted text-sm">
+                    <a href="<%= "#{root_url}#{url.short}" %>" class="text-nowrap text-success card-link" target="_blank"><%= "#{root_url}#{url.short}" %></a>
+                    <%= link_to 'Editar', edit_app_url_path(url), { class: 'edit-url float-right h5', remote: true, 'data-toggle': :modal, 'data-target': '#edit_url_modal' } %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= will_paginate @urls, renderer: BootstrapPagination::Rails %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="edit_url_modal" class="modal right fade" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+    <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+      <div id="edit_url_modal_content" class="modal-content no-border-radius"></div>
+    </div>
+  </div>
+<% else %>
+  <div class="header pb-6 pt-4 bg-gradient-header">
+    <div class="container-fluid">
+      <div class="header-body animated fadeInUp">
+        <p class="h5 ml-4">Sua lista está Vazia :(</p>
+        <p class="h5 ml-4">Começe Criando seu primeiro Short.er Link</p>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= will_paginate @urls, renderer: BootstrapPagination::Rails %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

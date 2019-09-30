@@ -1,0 +1,25 @@
+<%= render partial: 'cards' %>
+
+<div class="container-fluid mt-3 mb-3" style="height: 100%;">
+  <div class="row">
+    <div class="col-md-4 animated fadeIn">
+      <%= link_to 'Novo Short.er Link', new_app_url_path, {remote: true, 'data-toggle': :modal, 'data-target': '#new_url_modal', class: 'btn btn-success new-url-button'} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div id="url-info-container" class="animated fadeInUp">
+        <h5 class="mt-6 text-center animated fadeInUp">Não existem estatísticas para mostrar</h5>
+        <div class="text-center animated fadeInUp">
+          <%= image_tag 'bar-chart-red.png', class: 'mx-auto d-block img-sm mt-4 opacity-70' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="new_url_modal" class="modal right fade" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+  <div class="modal-dialog modal- modal-dialog-centered modal-lg" role="document">
+    <div id="new_url_modal_content" class="modal-content no-border-radius"></div>
+  </div>
+</div>

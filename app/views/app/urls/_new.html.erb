@@ -1,0 +1,16 @@
+<div class="modal-body p-0">
+  <div class="card bg-secondary shadow border-0">
+    <div class="card-header bg-danger no-border-radius">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="btn-wrapper text-center text-white">
+        <h1 class="text-white">Novo Short.er Link</h1>
+      </div>
+    </div>
+    <div class="card-body px-lg-5 py-lg-5">
+      <%= render partial: 'layouts/app/alerts/errors', locals: { errors: url.errors.full_messages } %>
+      <%= render partial: 'form', locals: { url: url, path: app_urls_path } %>
+    </div>
+  </div>
+</div>

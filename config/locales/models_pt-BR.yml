@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      url:
+        one: Short.er Link
+        other: Short.er Links
+      click:
+        one: Clique
+        other: Cliques

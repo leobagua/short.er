@@ -1,0 +1,57 @@
+<nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Short.er</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbar-danger" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar-danger">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-danger" aria-controls="navbar-danger" aria-expanded="false" aria-label="Toggle navigation">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="#">
+            <span class="nav-link-inner--text d-lg-none">Meu Perfil</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link nav-link-icon' do %>
+            <span class="nav-link-inner--text d-lg-none">Sair</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="navbar-nav align-items-center d-none d-md-flex">
+      <li class="nav-item dropdown">
+        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="media align-items-center">
+            <div class="media-body ml-2 d-none d-lg-block">
+              <span class="mb-0 text-sm  font-weight-bold"><%= current_user.email %></span>
+            </div>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+          <div class=" dropdown-header noti-title">
+            <h6 class="text-overflow m-0">Meu Menu</h6>
+          </div>
+          <a href="#" class="dropdown-item">
+            <span>Meu Perfil</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <%= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do %>
+            <span>Sair</span>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

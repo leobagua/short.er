@@ -1,0 +1,64 @@
+<div class="row mt-4 mb-5">
+  <div class="col-xl-6">
+    <div class="card shadow">
+      <div class="card-header bg-transparent">
+        <div class="row align-items-center">
+          <div class="col">
+            <h6 class="text-uppercase text-muted ls-1 mb-1">Contagem de Clicks</h6>
+            <h3 class="text-uppercase ls-1 mb-1"><%= url.long %></h3>
+            <h5 class="mb-0 text-success"><%= "#{root_url}#{url.short}" %></h5>
+            <h6 class="mb-0 text-success"><%= url.clicks.count %> clique(s)</h6>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart">
+          <canvas id="chart-orders" class="chart-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6">
+    <div class="card shadow">
+      <div class="card-header bg-transparent">
+        <div class="row align-items-center">
+          <div class="col">
+            <h6 class="text-uppercase text-muted ls-1 mb-1">Localizações</h6>
+            <h3 class="text-uppercase ls-1 mb-1">Países</h3>
+            <h5 class="mb-0 text-success"><%= "#{root_url}#{url.short}" %></h5>
+            <h6 class="mb-0 text-success"><%= url_clicks_info[:clicks_by_country].size %></h6>
+          </div>
+        </div>
+      </div>
+      <div class="card-body pl-0 pr-0">
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">País</th>
+              <th scope="col">Cliques</th>
+              <th scope="col">Taxa de Cliques</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% url_clicks_info[:clicks_by_country].each do |click_by_country| %>
+              <tr>
+                <th scope="row">
+                  <%= click_by_country.country %>
+                </th>
+                <td>
+                  <%= click_by_country.number_of_clicks %>
+                </td>
+                <td>
+                  <i class="fas fa-arrow-up text-success mr-3"></i> 89,53%
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
