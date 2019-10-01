@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show no-border-radius" role="alert">
+    <% resource.errors.full_messages.each do |message| %>
+      <span class="alert-inner--text text-white row"><%= message %></span>
+    <% end %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
