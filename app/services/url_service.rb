@@ -1,6 +1,7 @@
 class UrlService
 
-  PROTOCOL_REGEX = /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  PROTOCOL_REGEX = /^(http|https|ftp)/ix
+  URL_REGEX = /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
 
   def self.create_url(attributes)
     Url.transaction do
@@ -16,6 +17,6 @@ class UrlService
 
   def self.valid_url?(url)
     url.to_s.prepend('http://') unless url =~ PROTOCOL_REGEX
-    (url =~ PROTOCOL_REGEX).present?
+    (url =~ URL_REGEX).present?
   end
 end

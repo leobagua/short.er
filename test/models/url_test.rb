@@ -40,8 +40,7 @@ class UrlTest < ActiveSupport::TestCase
     end
 
     assert_not_empty url.clicks
-    assert_equal 5, url.clicks
-    assert url.first.user.is_a?(Click)
+    assert_equal 5, url.clicks.count
   end
 
   test 'Unique short link' do
