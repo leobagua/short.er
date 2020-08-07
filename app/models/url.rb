@@ -14,19 +14,15 @@ class Url < ApplicationRecord
   private
 
   def define_short_url
-    current_digest_length = DIGEST_LENGTH
-    long_digest = DigestService.long_digest_url long
-    short = long_digest.slice(0..current_digest_length)
-
+    short_url = digest_short(long)
     self.short = loop do
-      if short.size < DIGEST_LENGTH + 1
-        long_digest = DigestService.long_digest_url long
-        current_digest_length = DIGEST_LENGTH
-      end
-      break short unless Url.exists?(short: short)
-      short = long_digest.slice(0..current_digest_length)
-      current_digest_length += 1
+      break short_url unless Url.exists?(short: short_url)
+      short_url = digest_short(long)
     end
+  end
+
+  def digest_short(url)
+    DigestService.long_digest_url(url)[0...DIGEST_LENGTH]
   end
 
   def valid_url?
