@@ -7,7 +7,7 @@ class Url < ApplicationRecord
 
   before_validation :define_short_url, if: :new_record?
 
-  scope :from_current_user, -> (user) {where user: user}
+  scope :from_current_user, -> (user) { where user: user }
 
   DIGEST_LENGTH = 6
 
@@ -30,6 +30,6 @@ class Url < ApplicationRecord
   end
 
   def valid_url?
-    errors.add :long, 'não é uma url válida' unless UrlService.valid_url? long
+    errors.add :long, 'is not a valid url' unless UrlService.valid_url? long
   end
 end

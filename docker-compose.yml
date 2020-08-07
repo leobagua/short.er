@@ -1,0 +1,31 @@
+version: '3.4'
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - ./entrypoints/app-entrypoint.sh:/app/entrypoints/app-entrypoint.sh
+      - ./Gemfile:/app/Gemfile
+      - ./Gemfile.lock:/app/Gemfile.lock
+      - /usr/local/bundle/gems
+    environment:
+      RAILS_ENV: development
+      DATABASE_NAME: shorter-dev
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: postgres
+  postgres:
+    image: postgres:12.1
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: shorter-dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+volumes:
+  gems:
+  db_data:

@@ -18,11 +18,13 @@ module App
 
     def create
       @url = UrlService.create_url url_params.merge(user: current_user)
-      if @url.has_saved?
-        redirect_to app_urls_path
-      else
-        respond_to do |format|
-          format.js { render action: 'new' }
+      respond_to do |format|
+        format.js do
+          if @url.has_saved?
+            render js: "window.location = '#{app_urls_path}';"
+          else
+            render action: 'edit'
+          end
         end
       end
     end
@@ -31,11 +33,13 @@ module App
 
     def update
       UrlService.update_url(@url, url_params)
-      if @url.has_updated?
-        redirect_to app_urls_path
-      else
-        respond_to do |format|
-          format.js { render action: 'edit' }
+      respond_to do |format|
+        format.js do
+          if @url.has_updated?
+            render js: "window.location = '#{app_urls_path}';"
+          else
+            render action: 'edit'
+          end
         end
       end
     end
